@@ -1,0 +1,144 @@
+@import "tailwindcss";
+
+:root {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  color: #fff;
+  background: #CE1126;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  width: 100%;
+  min-width: 320px;
+  min-height: 100%;
+  margin: 0;
+}
+
+.redirect-page {
+  min-height: 100svh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #CE1126;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  padding: 24px;
+  opacity: 0;
+  animation: fade-in 500ms ease-out forwards;
+}
+
+.seal-wrap {
+  position: relative;
+  width: 292px;
+  height: 292px;
+  display: grid;
+  place-items: center;
+}
+
+.spinner {
+  position: absolute;
+  inset: 0;
+  border: 3px solid rgba(255, 255, 255, 0.26);
+  border-top-color: transparent;
+  border-right-color: #fff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.seal {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 4px solid #fff;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 8px 30px rgba(65, 0, 8, 0.16);
+}
+
+.seal img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.seal-fallback {
+  display: none;
+  position: absolute;
+  inset: 0;
+  place-content: center;
+  justify-items: center;
+  gap: 5px;
+  border-radius: 50%;
+  color: #CE1126;
+  background: #fff;
+  text-align: center;
+}
+
+.fallback-monogram {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 58px;
+  font-weight: 700;
+  letter-spacing: -3px;
+}
+
+.fallback-caption {
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+.redirect-link {
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.5;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  transition: opacity 160ms ease;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+.redirect-link:hover { opacity: 0.72; }
+.redirect-link:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes fade-in { to { opacity: 1; } }
+
+@media (min-width: 768px) {
+  .hero { gap: 36px; }
+  .seal-wrap { width: 232px; height: 232px; }
+  .seal { width: 200px; height: 200px; }
+}
+
+@media (min-width: 1024px) {
+  .hero { gap: 38px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
